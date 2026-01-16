@@ -30,7 +30,7 @@ def percentile(values, p):
     return values[k]
 
 
-@app.post("/")
+@app.post("/api/latency")
 async def metrics(req: Request):
     body = await req.json()
     regions = body["regions"]
