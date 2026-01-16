@@ -8,11 +8,12 @@ app = FastAPI()
 # Enable CORS for POST requests from any origin
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],       # allow any origin
-    allow_methods=["POST"],    # only POST allowed
-    allow_headers=["*"],       # allow any headers
+    allow_origins=["*"],
+    allow_methods=["*"],   # <-- changed from ["POST"] to ["*"]
+    allow_headers=["*"],
     allow_credentials=False
 )
+
 
 # Load JSON data
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -51,3 +52,4 @@ async def metrics(req: Request):
         }
 
     return JSONResponse(content=result)
+
