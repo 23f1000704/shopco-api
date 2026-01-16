@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
@@ -14,6 +14,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.options("/api/latency")
+async def options_latency():
+    return Response(
+        status_code=200,
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "*",
+        }
+    )
 
 # --- Load JSON file ---
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -32,7 +43,11 @@ def percentile(values, p):
 
 
 @app.post("/api/latency")
-async def metrics(req: Request):
+async def metrics(req: Request, response: Response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "*"
+    
     body = await req.json()
     regions = body["regions"]
     threshold = body["threshold_ms"]
@@ -62,4 +77,3 @@ async def metrics(req: Request):
         }
 
     return result
-
