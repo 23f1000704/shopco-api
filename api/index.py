@@ -5,23 +5,21 @@ import json, os, math
 
 app = FastAPI()
 
-# --- Enable CORS only for POST requests from any origin ---
+# Enable CORS for POST requests from any origin
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # allow requests from any origin
-    allow_methods=["POST"],   # only POST requests
-    allow_headers=["*"],      # allow all headers
+    allow_origins=["*"],       # allow any origin
+    allow_methods=["POST"],    # only POST allowed
+    allow_headers=["*"],       # allow any headers
     allow_credentials=False
 )
 
-# --- Load JSON data ---
+# Load JSON data
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DATA_PATH = os.path.join(BASE_DIR, "q-vercel-latency.json")
-
 with open(DATA_PATH, "r", encoding="utf-8") as f:
     DATA = json.load(f)
 
-# --- Helper: compute percentile ---
 def percentile(values, p):
     if not values:
         return 0
@@ -29,7 +27,6 @@ def percentile(values, p):
     k = math.ceil((p / 100) * len(values)) - 1
     return values[k]
 
-# --- POST endpoint ---
 @app.post("/api/latency")
 async def metrics(req: Request):
     body = await req.json()
@@ -37,25 +34,19 @@ async def metrics(req: Request):
     threshold = body.get("threshold_ms", 180)
 
     result = {}
-
     for region in regions:
         records = [r for r in DATA if r["region"] == region]
         latencies = [r["latency_ms"] for r in records]
         uptimes = [r["uptime_pct"] for r in records]
 
         if not latencies:
-            result[region] = {
-                "avg_latency": 0,
-                "p95_latency": 0,
-                "avg_uptime": 0,
-                "breaches": 0
-            }
+            result[region] = {"avg_latency": 0, "p95_latency": 0, "avg_uptime": 0, "breaches": 0}
             continue
 
         result[region] = {
-            "avg_latency": round(sum(latencies) / len(latencies), 2),
+            "avg_latency": round(sum(latencies)/len(latencies), 2),
             "p95_latency": round(percentile(latencies, 95), 2),
-            "avg_uptime": round(sum(uptimes) / len(uptimes), 3),
+            "avg_uptime": round(sum(uptimes)/len(uptimes), 3),
             "breaches": sum(l > threshold for l in latencies)
         }
 
