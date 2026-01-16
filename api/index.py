@@ -1,13 +1,10 @@
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-import json
-import os
-import math
+import json, os, math
 
 app = FastAPI()
 
-# Enable CORS for POST from any origin
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,24 +13,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.options("/api/latency")
-async def options_latency():
-    return Response(
-        status_code=200,
-        headers={
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, OPTIONS",
-            "Access-Control-Allow-Headers": "*",
-        }
-    )
-
-# --- Load JSON file ---
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DATA_PATH = os.path.join(BASE_DIR, "q-vercel-latency.json")
-
 with open(DATA_PATH, "r", encoding="utf-8") as f:
     DATA = json.load(f)
-
 
 def percentile(values, p):
     values = sorted(values)
@@ -42,7 +25,6 @@ def percentile(values, p):
     k = math.ceil((p / 100) * len(values)) - 1
     return values[k]
 
-
 @app.post("/api/latency")
 async def metrics(req: Request):
     body = await req.json()
@@ -50,20 +32,13 @@ async def metrics(req: Request):
     threshold = body["threshold_ms"]
 
     result = {}
-
     for region in regions:
         records = [r for r in DATA if r["region"] == region]
-
         latencies = [r["latency_ms"] for r in records]
         uptimes = [r["uptime_pct"] for r in records]
 
         if not latencies:
-            result[region] = {
-                "avg_latency": 0,
-                "p95_latency": 0,
-                "avg_uptime": 0,
-                "breaches": 0
-            }
+            result[region] = {"avg_latency": 0, "p95_latency": 0, "avg_uptime": 0, "breaches": 0}
             continue
 
         result[region] = {
@@ -73,11 +48,4 @@ async def metrics(req: Request):
             "breaches": sum(l > threshold for l in latencies),
         }
 
-    return JSONResponse(
-        content=result,
-        headers={
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, OPTIONS",
-            "Access-Control-Allow-Headers": "*",
-        }
-    )
+    return JSONResponse(content=result)
