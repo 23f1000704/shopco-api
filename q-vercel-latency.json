@@ -1,0 +1,254 @@
+[
+  {
+    "region": "apac",
+    "service": "analytics",
+    "latency_ms": 196.48,
+    "uptime_pct": 98.061,
+    "timestamp": 20250301
+  },
+  {
+    "region": "apac",
+    "service": "recommendations",
+    "latency_ms": 127.91,
+    "uptime_pct": 97.209,
+    "timestamp": 20250302
+  },
+  {
+    "region": "apac",
+    "service": "payments",
+    "latency_ms": 148.1,
+    "uptime_pct": 98.122,
+    "timestamp": 20250303
+  },
+  {
+    "region": "apac",
+    "service": "catalog",
+    "latency_ms": 226.05,
+    "uptime_pct": 99.096,
+    "timestamp": 20250304
+  },
+  {
+    "region": "apac",
+    "service": "payments",
+    "latency_ms": 116.3,
+    "uptime_pct": 98.128,
+    "timestamp": 20250305
+  },
+  {
+    "region": "apac",
+    "service": "checkout",
+    "latency_ms": 219.92,
+    "uptime_pct": 97.561,
+    "timestamp": 20250306
+  },
+  {
+    "region": "apac",
+    "service": "support",
+    "latency_ms": 170.37,
+    "uptime_pct": 97.447,
+    "timestamp": 20250307
+  },
+  {
+    "region": "apac",
+    "service": "catalog",
+    "latency_ms": 129.33,
+    "uptime_pct": 97.478,
+    "timestamp": 20250308
+  },
+  {
+    "region": "apac",
+    "service": "analytics",
+    "latency_ms": 192.05,
+    "uptime_pct": 97.589,
+    "timestamp": 20250309
+  },
+  {
+    "region": "apac",
+    "service": "recommendations",
+    "latency_ms": 217.01,
+    "uptime_pct": 98.22,
+    "timestamp": 20250310
+  },
+  {
+    "region": "apac",
+    "service": "recommendations",
+    "latency_ms": 175.97,
+    "uptime_pct": 98.846,
+    "timestamp": 20250311
+  },
+  {
+    "region": "apac",
+    "service": "recommendations",
+    "latency_ms": 181.4,
+    "uptime_pct": 97.897,
+    "timestamp": 20250312
+  },
+  {
+    "region": "emea",
+    "service": "payments",
+    "latency_ms": 182.65,
+    "uptime_pct": 98.519,
+    "timestamp": 20250301
+  },
+  {
+    "region": "emea",
+    "service": "payments",
+    "latency_ms": 207.62,
+    "uptime_pct": 97.221,
+    "timestamp": 20250302
+  },
+  {
+    "region": "emea",
+    "service": "support",
+    "latency_ms": 234.09,
+    "uptime_pct": 97.785,
+    "timestamp": 20250303
+  },
+  {
+    "region": "emea",
+    "service": "payments",
+    "latency_ms": 204.19,
+    "uptime_pct": 99.142,
+    "timestamp": 20250304
+  },
+  {
+    "region": "emea",
+    "service": "support",
+    "latency_ms": 180.28,
+    "uptime_pct": 98.673,
+    "timestamp": 20250305
+  },
+  {
+    "region": "emea",
+    "service": "analytics",
+    "latency_ms": 146.13,
+    "uptime_pct": 97.186,
+    "timestamp": 20250306
+  },
+  {
+    "region": "emea",
+    "service": "support",
+    "latency_ms": 217.45,
+    "uptime_pct": 99.302,
+    "timestamp": 20250307
+  },
+  {
+    "region": "emea",
+    "service": "recommendations",
+    "latency_ms": 170.28,
+    "uptime_pct": 97.129,
+    "timestamp": 20250308
+  },
+  {
+    "region": "emea",
+    "service": "recommendations",
+    "latency_ms": 194.06,
+    "uptime_pct": 97.517,
+    "timestamp": 20250309
+  },
+  {
+    "region": "emea",
+    "service": "analytics",
+    "latency_ms": 116.13,
+    "uptime_pct": 98.493,
+    "timestamp": 20250310
+  },
+  {
+    "region": "emea",
+    "service": "support",
+    "latency_ms": 162.88,
+    "uptime_pct": 97.481,
+    "timestamp": 20250311
+  },
+  {
+    "region": "emea",
+    "service": "support",
+    "latency_ms": 116.92,
+    "uptime_pct": 97.342,
+    "timestamp": 20250312
+  },
+  {
+    "region": "amer",
+    "service": "analytics",
+    "latency_ms": 188.85,
+    "uptime_pct": 98.853,
+    "timestamp": 20250301
+  },
+  {
+    "region": "amer",
+    "service": "catalog",
+    "latency_ms": 164.6,
+    "uptime_pct": 99.445,
+    "timestamp": 20250302
+  },
+  {
+    "region": "amer",
+    "service": "support",
+    "latency_ms": 163.47,
+    "uptime_pct": 99.496,
+    "timestamp": 20250303
+  },
+  {
+    "region": "amer",
+    "service": "support",
+    "latency_ms": 153.74,
+    "uptime_pct": 98.005,
+    "timestamp": 20250304
+  },
+  {
+    "region": "amer",
+    "service": "support",
+    "latency_ms": 154.45,
+    "uptime_pct": 97.707,
+    "timestamp": 20250305
+  },
+  {
+    "region": "amer",
+    "service": "checkout",
+    "latency_ms": 212.02,
+    "uptime_pct": 97.421,
+    "timestamp": 20250306
+  },
+  {
+    "region": "amer",
+    "service": "analytics",
+    "latency_ms": 120.19,
+    "uptime_pct": 98.08,
+    "timestamp": 20250307
+  },
+  {
+    "region": "amer",
+    "service": "catalog",
+    "latency_ms": 123.22,
+    "uptime_pct": 98.893,
+    "timestamp": 20250308
+  },
+  {
+    "region": "amer",
+    "service": "analytics",
+    "latency_ms": 125.75,
+    "uptime_pct": 99.023,
+    "timestamp": 20250309
+  },
+  {
+    "region": "amer",
+    "service": "support",
+    "latency_ms": 113.67,
+    "uptime_pct": 97.756,
+    "timestamp": 20250310
+  },
+  {
+    "region": "amer",
+    "service": "catalog",
+    "latency_ms": 170.43,
+    "uptime_pct": 99.329,
+    "timestamp": 20250311
+  },
+  {
+    "region": "amer",
+    "service": "catalog",
+    "latency_ms": 122.41,
+    "uptime_pct": 98.683,
+    "timestamp": 20250312
+  }
+]

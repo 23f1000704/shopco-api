@@ -1,0 +1,4 @@
+{
+  "regions": ["apac", "emea", "amer"],
+  "threshold_ms": 150
+}
